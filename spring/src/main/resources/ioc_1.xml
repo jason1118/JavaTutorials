@@ -10,20 +10,20 @@
     class:需要ioc容器管理的bean类路径
     此时：创建的对象是空对象，所有属性都是默认值对象是null，基本类型是类型对应默认值
     -->
-    <bean id="person" class="cn.jason.spring.bean.Person"/>
+    <bean id="person" class="cn.jason.spring.bean.chapter01.Person"/>
 
     <!--
     2. properties使用
     name 是属性名 value则是 属性的赋值
     -->
-    <bean id="person2" class="cn.jason.spring.bean.Person">
+    <bean id="person2" class="cn.jason.spring.bean.chapter01.Person">
         <!--注意：xml是文本文件value引号中都是字符串，并不是整型-->
         <property name="age" value="14"/>
         <property name="gender" value="男"/>
         <property name="name" value="张三"/>
     </bean>
 
-    <bean id="person3" class="cn.jason.spring.bean.Person" p:name="命名空间" p:age="5">
+    <bean id="person3" class="cn.jason.spring.bean.chapter01.Person" p:name="命名空间" p:age="5">
 
     </bean>
 

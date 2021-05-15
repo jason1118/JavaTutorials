@@ -1,4 +1,4 @@
-package cn.jason.spring.bean2;
+package cn.jason.spring.bean.chapter01;
 
 /**
  * @ClassName Book

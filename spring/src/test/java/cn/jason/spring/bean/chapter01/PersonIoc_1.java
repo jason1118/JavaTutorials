@@ -1,9 +1,10 @@
-package cn.jason.spring.bean2;
+package cn.jason.spring.bean.chapter01;
 
+import cn.jason.spring.bean.chapter01.Person1;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Person1Test {
+public class PersonIoc_1 {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc_2.xml");
 
     /*
@@ -25,5 +26,24 @@ public class Person1Test {
     public void test4(){
         Person1 person2 = context.getBean("person2", Person1.class);
         System.out.println(person2);
+        //Person1{name='null', age='null', gender='null', email='null', car=null, books=[Book{bookName='西游记', author='null'}, Book{bookName='水浒传', author='null'}], maps=null, properties=null}
+    }
+
+    /*
+    * 获取map
+    * */
+    @Test
+    public void test5(){
+        Person1 person3 = context.getBean("person2", Person1.class);
+        System.out.println(person3);
+    }
+
+    /*
+    * Properties 赋值
+    * */
+    @Test
+    public void test6(){
+        Person1 person2 = context.getBean("person3", Person1.class);
+        System.out.println(person2.getProperties()); //{password=123456, username=root}
     }
 }

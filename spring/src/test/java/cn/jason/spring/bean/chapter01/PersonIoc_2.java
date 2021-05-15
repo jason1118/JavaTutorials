@@ -1,6 +1,6 @@
-package cn.jason.spring;
+package cn.jason.spring.bean.chapter01;
 
-import cn.jason.spring.bean.Person;
+import cn.jason.spring.bean.chapter01.Person;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /*
  * 测试ioc容器管理bean对象
  * */
-public class PersonTest {
+public class PersonIoc_2 {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc_1.xml");
     @Test
     public void test1(){
@@ -26,7 +26,9 @@ public class PersonTest {
     @Test
     public void test2(){
         //这种获取方式不需要转化类型
-        Person person2 = context.getBean("person2", Person.class);
-        System.out.println(person2);
+        Person person3 = context.getBean("person3", Person.class);
+        System.out.println(person3);
     }
+
+
 }
