@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="car" class="cn.jason.spring.bean2.Car">
+                <property name="carName" value="宝马"/>
+                <property name="carColor" value="绿色"/>
+                <property name="carPrice" value="30000"/>
+        </bean>
+
+        <!--各种类型属性赋值-->
+        <bean id="person1" class="cn.jason.spring.bean2.Person1">
+                <property name="name" value="null"/>
+                <property name="gender">
+                        <null/>
+                </property>
+
+                <!--引用其他bean组件-->
+                <!--<property name="car" ref="car"/>-->
+                <!--使用bean标签创建-->
+                <property name="car">
+                        <!--相当于new Car（）-->
+                        <bean class="cn.jason.spring.bean2.Car"/>
+                </property>
+
+        </bean>
+
+
+        <bean id="book0001" class="cn.jason.spring.bean2.Book" p:bookName="水浒传"/>
+        <bean id="person2" class="cn.jason.spring.bean2.Person1">
+                <property name="books">
+                        <!--Books books = new ArrayList<Book>()-->
+                        <list>
+                                <!--添加每一个元素-->
+                                <!--引用内部的bean是不能通过容器获取到的-->
+                                <bean id="book0000x" class="cn.jason.spring.bean2.Book" p:bookName="西游记"/>
+                                <ref bean="book0001"/>
+                        </list>
+                </property>
+        </bean>
+
+</beans>
