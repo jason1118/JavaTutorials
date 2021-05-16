@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--bean属性配置共用-->
+    <bean id="person" class="cn.jason.spring.bean.chapter01.Person1" abstract="true"><!--还可以选择abstract属性，只是被继承，不能获取这个组件-->
+        <property name="name" value="张三"/>
+        <property name="age" value="18"/>
+        <property name="email" value="email"/>
+        <property name="gender" value="男"/>
+    </bean>
+    <bean id="person1" class="cn.jason.spring.bean.chapter01.Person1" parent="person"> <!--如果是继承，此处class属性也可省略-->
+        <!--假设person1 组件值修改姓名属性，其他不该则可以继承--><!--通过parent属性继承哪个-->
+        <property name="name" value="李四"/>
+    </bean>
+
+</beans>
