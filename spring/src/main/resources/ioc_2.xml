@@ -95,4 +95,10 @@
                         <map></map>
                 </entry>
         </util:map>
+
+        <!--级联属性赋值，属性的属性-->
+        <bean class="cn.jason.spring.bean.chapter01.Person1" id="person8">
+                <property name="car" ref="car"/>
+                <property name="car.carName" value="大众"/>
+        </bean>
 </beans>

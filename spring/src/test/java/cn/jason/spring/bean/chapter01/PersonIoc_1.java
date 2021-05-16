@@ -54,4 +54,15 @@ public class PersonIoc_1 {
         Person1 person4 = context.getBean("person4", Person1.class);
         System.out.println(person4);
     }
+
+    /*
+    * 级联属性赋值
+    * 就是给属性的属性赋值
+    * 注意：级联属性如果修改的是引用类型，那么原始的对象的属性会被修改
+    * */
+    @Test
+    public void test8(){
+        Person1 person8 = context.getBean("person8", Person1.class);
+        System.out.println(person8.getCar());
+    }
 }
