@@ -1,6 +1,5 @@
 package cn.jason.spring.bean.chapter01;
 
-import cn.jason.spring.bean.chapter01.Person1;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -45,5 +44,14 @@ public class PersonIoc_1 {
     public void test6(){
         Person1 person2 = context.getBean("person3", Person1.class);
         System.out.println(person2.getProperties()); //{password=123456, username=root}
+    }
+
+    /*
+    *
+    * */
+    @Test
+    public void test7(){
+        Person1 person4 = context.getBean("person4", Person1.class);
+        System.out.println(person4);
     }
 }
