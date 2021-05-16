@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--工厂模式创建对象-->
+    <!--
+    工厂模式：有一个专门的类，我们需要的对象由工厂来提供
+    静态工厂：不需要实力工厂类，通过工厂的静态方法来提供
+    实例工厂：需要实例工厂类，通过工厂的方法提供
+    -->
+
+    <!--静态工厂-->
+    <bean id="airPlane1" class="cn.jason.spring.bean.chapter02.AirPlanStaticFactory" factory-method="getAirPlan">
+        <!--可以指定方法参数-->
+        <constructor-arg value="李四"/>
+    </bean>
+
+    <!--实例工厂-->
+    <!--1.先创建实例工厂组件-->
+    <bean id="airPlanInstanceFactory" class="cn.jason.spring.bean.chapter02.AirPlanInstanceFactory"/>
+
+    <!--2.-->
+    <bean id="airPlan02" class="cn.jason.spring.bean.chapter02.AirPlan" factory-bean="airPlanInstanceFactory" factory-method="getAirPlan">
+    <!--
+    factory-method 根据 construct-arg 的参数个数匹配工厂方法，参数个数不对，则匹配不到方法
+    -->
+        <constructor-arg value="太行"/>
+    </bean>
+</beans>
