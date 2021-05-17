@@ -18,7 +18,7 @@ public class PersonIoc_2 {
     }
 
     @Test
-    public void test2(){
+    public void  test2(){
         //这种获取方式不需要转化类型
         Person person3 = context.getBean("person3", Person.class);
         System.out.println(person3);
