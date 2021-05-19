@@ -8,6 +8,9 @@ public class Person {
     private int age;
     private Car car;
     private List<Book> books;
+    private Double salary;
+    private String email;
+    private String gender;
 
 
     public Person() {
@@ -50,6 +53,22 @@ public class Person {
         this.books = books;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -57,6 +76,17 @@ public class Person {
                 ", age=" + age +
                 ", car=" + car +
                 ", books=" + books +
+                ", salary=" + salary +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public Double getSalary() {
+        return salary;
     }
 }

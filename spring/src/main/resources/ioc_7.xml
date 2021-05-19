@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    SpEL （Spring Expression Language)
+    用法：使用#{},在打括号中是SpEL表达式
+    -->
+    <bean id="person" class="cn.jason.spring.bean.chapter04.Person">
+        <!--1.使用字面量-->
+        <property name="salary" value="#{12*4833.328}"/>
+        <!--2.引用其他bean-->
+        <!--<property name="car" ref="car"/>-->
+        <property name="car" value="#{car}"/>
+        <!--3.引用其他bean的某个属性值-->
+        <property name="name" value="#{book.bookName}"/>
+        <!--调用静态方法--> <!--#{T(静态全类名).静态方法名(1,2)}-->
+        <property name="email" value="#{T(java.util.UUID).randomUUID().toString()}"/>
+        <!--调用非静态方法-->
+        <property name="gender" value="#{book.getBookName()}"/>
+    </bean>
+
+    <bean id="car" class="cn.jason.spring.bean.chapter04.Car" p:brandName="宝马"/>
+    <bean id="book" class="cn.jason.spring.bean.chapter01.Book" p:bookName="书名" />
+
+</beans>
