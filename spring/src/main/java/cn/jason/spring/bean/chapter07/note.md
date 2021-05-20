@@ -17,4 +17,10 @@ IOC的真正为例是帮助我们管理实例。主要核心是：
 private BookService bookService; 先得到BookService类型去容器中找到组件
 相当于 bookService = ioc.getBean("BookService.class")
 
+* 找到？找到即赋值 
+* 找不到？BookService 上//@Service的话则抛异常（未找到）
+* 找到多个？
+    1. 按照类型(BookService)查找（@AutoWired会查找类和类子类BookServiceExt）
+    2. 按照变量名即bookService作为id继续匹配 （BookService的默认id为bookService）
+
  
