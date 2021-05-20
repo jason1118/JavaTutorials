@@ -22,5 +22,16 @@ private BookService bookService; 先得到BookService类型去容器中找到组
 * 找到多个？
     1. 按照类型(BookService)查找（@AutoWired会查找类和类子类BookServiceExt）
     2. 按照变量名即bookService作为id继续匹配 （BookService的默认id为bookService）
+  
+## @Qualifier
+
+假设根据类查找能查到两个或更多，此时根据变量名查找。如果变量名不能确定装配哪个就会报错
+
+此时，如果类中如果好多地方引用变量名，也不好做修改，此时可以使用@Qualifier指定一个名字作为id
+
+通常可以快速指定装配子类或父类
+
+## @Autowired 属性 required
+@Autowired(required=false) 意思找不到不要报错，装配null。
 
  

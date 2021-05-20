@@ -2,6 +2,7 @@ package cn.jason.spring.bean.chapter07.servlet;
 
 import cn.jason.spring.bean.chapter07.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -17,9 +18,10 @@ import org.springframework.stereotype.Controller;
 * */
 @Controller
 public class BookServlet {
+    @Qualifier("bookService") //指定一个变量作为ID查找
     @Autowired
-    private BookService bookService;
+    private BookService bookServiceExt2;
     public void doGet(){
-        bookService.save();
+        bookServiceExt2.save();
     }
 }
