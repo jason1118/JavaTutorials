@@ -34,4 +34,26 @@ private BookService bookService; 先得到BookService类型去容器中找到组
 ## @Autowired 属性 required
 @Autowired(required=false) 意思找不到不要报错，装配null。
 
- 
+## @Autowired作用位置
+
+可以修饰类、属性字段、属性方法、注解
+
+如果是属性方法。容器在创建的时候就会自动注入。不需要等到执行时再去获取
+
+```java
+//容器创建的时候就已经自动注入
+public void test(BookDao bookDao,@Qualifier("bookService") BookService bookService){}
+```
+
+## @Resource 注解
+
+也是自动装配注解 包括 @Injection 也是
+
+@AutoWired 最强大
+@Resource 在javax下，java拓展标准。是j2ee的
+@Injection 在EJB下
+
+@Autowired和@Resource区别
+
+@Resource扩展性更强，如果切换成另外一个容器框架还是可以使用
+
