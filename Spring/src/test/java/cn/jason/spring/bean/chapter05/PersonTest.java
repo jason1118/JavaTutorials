@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Version 1.0
  **/
 public class PersonTest {
-    ApplicationContext context = new ClassPathXmlApplicationContext("ioc_7.xml");
+    ApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_7.xml");
     @Test
     public void test01(){
         Person bean = context.getBean(Person.class);

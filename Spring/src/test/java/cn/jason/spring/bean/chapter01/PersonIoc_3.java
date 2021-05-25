@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 测试ioc容器管理bean对象
  * */
 public class PersonIoc_3 {
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc_3.xml");
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_3.xml");
     /*
     * 属性配置继承测试
     * */

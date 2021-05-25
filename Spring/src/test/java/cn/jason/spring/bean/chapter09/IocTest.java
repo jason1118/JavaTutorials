@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class IocTest {
-    ApplicationContext context = new ClassPathXmlApplicationContext("ioc_10.xml");
+    ApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_10.xml");
     @Test
     public void test(){
         BookService bookService = context.getBean(BookService.class);

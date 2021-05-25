@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class PersonIoc_1 {
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc_2.xml");
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_2.xml");
 
     /*
     * 使用null值赋值

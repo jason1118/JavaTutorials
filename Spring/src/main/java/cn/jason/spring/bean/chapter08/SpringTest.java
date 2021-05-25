@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration("classpath:ioc_9.xml")
+@ContextConfiguration("classpath:bean/ioc_9.xml")
 @RunWith(SpringJUnit4ClassRunner.class) //使用SpringJUnit4ClassRunner测试所有@Test方法
 public class SpringTest {
 

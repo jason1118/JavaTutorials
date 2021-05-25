@@ -76,4 +76,14 @@ public class CalculateTest {
         MyCalculate bean = context.getBean(MyCalculate.class);
         bean.additive(1, 2);
     }
+
+    /*
+    * 两个切面同时切入
+    * */
+    @Test
+    public void test07(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("aop/aop_1.xml");
+        MyCalculate bean = context.getBean(MyCalculate.class);
+        bean.additive(1, 2);
+    }
 }

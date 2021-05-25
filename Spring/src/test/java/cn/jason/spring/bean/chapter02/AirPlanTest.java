@@ -3,8 +3,6 @@ package cn.jason.spring.bean.chapter02;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import static org.junit.Assert.*;
-
 /**
  * @className: AirPlanTest
  * @description: TODO 类描述
@@ -13,7 +11,7 @@ import static org.junit.Assert.*;
  **/
 public class AirPlanTest {
 
-    ClassPathXmlApplicationContext contex = new ClassPathXmlApplicationContext("ioc_4.xml");
+    ClassPathXmlApplicationContext contex = new ClassPathXmlApplicationContext("bean/ioc_4.xml");
     @Test
     public void test01(){
         Object bean = contex.getBean("airPlane1");

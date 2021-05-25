@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class AnnotationTest {
-    ApplicationContext context = new ClassPathXmlApplicationContext("ioc_8.xml");
+    ApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_8.xml");
     @Test
     public void test(){
         //1.如果注解没有参数则是默认值（类名首字母小写）

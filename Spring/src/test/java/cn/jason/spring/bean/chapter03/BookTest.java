@@ -4,10 +4,8 @@ import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import static org.junit.Assert.*;
-
 public class BookTest {
-    ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("ioc_5.xml");
+    ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_5.xml");
 
     @Test
     /*

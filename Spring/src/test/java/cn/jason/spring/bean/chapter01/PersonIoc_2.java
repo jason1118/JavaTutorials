@@ -1,6 +1,5 @@
 package cn.jason.spring.bean.chapter01;
 
-import cn.jason.spring.bean.chapter01.Person;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 测试ioc容器管理bean对象
  * */
 public class PersonIoc_2 {
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc_1.xml");
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean/ioc_1.xml");
     @Test
     public void test1(){
         Object person = (Person) context.getBean("person");
