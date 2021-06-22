@@ -7,11 +7,15 @@
     <groupId>cn.jason</groupId>
     <artifactId>JavaTutorials</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!--多模块-->
     <modules>
         <module>spring</module>
+        <module>Mybatis</module>
     </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
+
+
 
     <dependencies>
         <dependency>
@@ -19,7 +23,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
         </dependency>
     </dependencies>
 

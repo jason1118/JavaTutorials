@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="db.properties">
+        <!--驱动写在这里，故意体现properties标签使用方式-->
+        <property name="${driver}" value="com.mysql.jdbc.Driver"/>
+    </properties>
+    <environments default="mysql_dev">
+        <environment id="mysql_dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="cn.jason.mybatis01.dao"/>
+    </mappers>
+</configuration>
