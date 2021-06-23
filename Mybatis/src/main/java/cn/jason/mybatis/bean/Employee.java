@@ -7,11 +7,13 @@ package cn.jason.mybatis.bean;
  * @Date 2021/6/22 10:40 下午
  **/
 public class Employee {
+    private Integer id;
     private String lastName;
     private String email;
     private String gender;
 
-    public Employee(String lastName, String email, String gender) {
+    public Employee(Integer id, String lastName, String email, String gender) {
+        this.id = id;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
@@ -20,7 +22,8 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "lastName='" + lastName + '\'' +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';

@@ -1,4 +1,4 @@
-package cn.jason.mybatis01;
+package cn.jason.mybatis.test;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.jason.mybatis02.dao.EmployeeMapper">
+    <!--ResultMap使用-->
+    <!--
+    ResultMap和ResultType只能使用一个
+    id:唯一标识符方便引用
+    type；需要定义规则的类
+    -->
+    <resultMap id="myEmpResultMap" type="cn.jason.mybatis.bean.Employee">
+        <!--
+        id：mybatis知道是主键，进行了优化。数据库主键也可以用result映射
+        column:数据对应的列名
+        property：返回类型（java bean）的属性名
+        -->
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <!--其他可以不写，会自动封装-->
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+    </resultMap>
+    
+    <select id="getEmp" resultMap="myEmpResultMap">
+        select *
+        from employee
+        where id = #{id};
+    </select>
+</mapper>

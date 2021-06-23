@@ -1,7 +1,7 @@
-package cn.jason.mybatis01;
+package cn.jason.mybatis02;
 
 import cn.jason.mybatis.bean.Employee;
-import cn.jason.mybatis01.dao.EmployeeMapper;
+import cn.jason.mybatis02.dao.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -41,11 +41,5 @@ public class TestMybatis {
         //查询一条数据
         Employee emp = mapper.getEmp(2);
         System.out.println(emp);
-        // 增加一条数据
-        Employee employee = new Employee(null,"jason", "163@163.com", "1");
-        Integer integer = mapper.addEmp(employee);
-        System.out.println(integer);
-        // 对于增删改需要提交
-        sqlSession.commit();
     }
 }

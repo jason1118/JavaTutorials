@@ -33,7 +33,7 @@
         <resources>
             <resource>
                 <!--主资源目录-->
-                <directory>src/main/java/cn/jason</directory>
+                <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/**/*.xml</include>
