@@ -11,6 +11,7 @@ public class Employee {
     private String lastName;
     private String email;
     private String gender;
+    private Department dept;
 
     public Employee(Integer id, String lastName, String email, String gender) {
         this.id = id;
@@ -26,6 +27,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
+                ", dept=" + dept +
                 '}';
     }
 }

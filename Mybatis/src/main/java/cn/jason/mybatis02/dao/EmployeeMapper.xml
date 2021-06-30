@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.jason.mybatis02.dao.EmployeeMapper">
-    <!--ResultMap使用-->
+    <!--ResultMap使用一-->
     <!--
     ResultMap和ResultType只能使用一个
     id:唯一标识符方便引用
@@ -27,5 +27,97 @@
         select *
         from employee
         where id = #{id};
+    </select>
+
+
+
+    <!--ResultMap使用二-->
+    <!--
+        id = EmpResultMapAndDept1 ====> “.” 形式访问
+    -->
+    <resultMap id="EmpResultMapAndDept1" type="cn.jason.mybatis.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="lastName" property="lastname"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="dept_name" property="dept.deptName"/>
+        <result column="dept_id" property="dept.id"/>
+    </resultMap>
+
+    <!--
+    association结果集嵌套映射 一
+     id = EmpResultMapAndDept1 ====> association标签联合映射
+    -->
+    <resultMap id="EmpResultMapAndDept2" type="cn.jason.mybatis.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="lastName" property="lastname"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <association property="dept" javaType="cn.jason.mybatis.bean.Department">
+            <id property="id" column="dept_id"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+
+    <select id="getEmpAndDept" resultMap="EmpResultMapAndDept2">
+        select e.id id,e.last_name ,e.gender ,e.email ,d.id dept_id, d.dept_name from employee e ,department d
+        where e.dep_id =d.id and e.id = #{ids}
+    </select>
+
+
+    <!--
+    association select嵌套映射 一
+
+    -->
+
+
+    <!--Employee-->
+    <resultMap id="EmpResultMapAndDept" type="cn.jason.mybatis.bean.Employee">
+        <id property="id" column="id"/>
+        <result column="lastName" property="lastname"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <association property="dept" select="getDeptById" column="dep_id"/>
+    </resultMap>
+
+    <select id="getEmpAndDeptSelect" resultMap="EmpResultMapAndDept">
+        select * from employee where id = #{id}
+    </select>
+
+
+    <!--Dept-->
+    <resultMap id="ResultMapDept" type="cn.jason.mybatis.bean.Department">
+        <id property="id" column="id"/>
+        <result property="deptName" column="dept_name"/>
+    </resultMap>
+
+    <select id="getDeptById" resultMap="ResultMapDept">
+        select * from department where id = #{id}
+    </select>
+
+
+    <!--
+    场景二：
+    查询部门的时候，给部门所有员工查询出来
+    -->
+    <!--Dept中查询所有员工-->
+
+
+    <resultMap id="ResultMapDeptIncEmps" type="cn.jason.mybatis.bean.Department">
+        <id property="id" column="id"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="emps" ofType="cn.jason.mybatis.bean.Employee">
+            <id property="id" column="emp_id"/>
+            <result property="lastName" column="last_name"/>
+        </collection>
+    </resultMap>
+    <select id="getDeptIncEmps" resultMap="ResultMapDeptIncEmps">
+        select
+            d.id id, d.dept_name dept_name,
+            e.id emp_id,e.last_name last_name,e.gender gender,e.email email
+        from department d
+                 left join employee e
+                           ON d.id = e.dep_id
+        where d.id = #{id}
     </select>
 </mapper>

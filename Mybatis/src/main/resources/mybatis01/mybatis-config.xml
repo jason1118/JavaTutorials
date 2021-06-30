@@ -9,7 +9,10 @@
         <property name="driver" value="com.mysql.jdbc.Driver"/>
     </properties>
     <settings>
+        <setting name="logImpl" value="LOG4J"/>
         <setting name="mapUnderscoreToCamelCase" value="false"/>
+
+
     </settings>
     <environments default="mysql_dev">
         <environment id="mysql_dev">
@@ -25,5 +28,6 @@
     <mappers>
         <package name="cn.jason.mybatis01.dao"/>
         <package name="cn.jason.mybatis02.dao"/>
+        <package name="cn.jason.mybatis03_DynamicSQL"/>
     </mappers>
 </configuration>
