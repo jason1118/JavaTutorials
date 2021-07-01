@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--自动装配-->
+
+    <bean id="person" class="cn.jason.spring.bean.chapter04.Person" autowire="byType"/>
+    <bean id="car02" class="cn.jason.spring.bean.chapter04.Car" p:brandName="宝马"/>
+
+    <!--测试多个类型相同-NoUniqueBeanDefinitionException-->
+    <!--<bean id="car01" class="cn.jason.spring.bean.chapter04.Car" p:brandName="奔驰"/>-->
+
+    <!--构造器装配-->
+    <!--
+    1. 先按照类型装配
+    public (Car car)（person bean中的属性方法）
+    先按照有参构造器的 参数类型装配
+    没有有参构造则赋值null
+    如果按照类型找到多个：参数的名作为ID继续匹配，找到就装配，找不到就
+    NoUniqueBeanDefinitionException: No qualifying bean of type 'cn.jason.spring.bean.chapter04.Car' available: expected single matching bean but found 2: car02,car01
+    -->
+
+    <!--按照id装配--><!--多个则先匹配Class再匹配ID，都符合则赋值-->
+<!--    <bean id="car01" class="cn.jason.spring.bean.chapter04.Car" p:brandName="宝马11"/>-->
+
+
+    <!--如果是List属性-->
+    <bean id="book01" class="cn.jason.spring.bean.chapter01.Book" p:bookName="Java Core1"/>
+    <bean id="book02" class="cn.jason.spring.bean.chapter01.Book" p:bookName="Java Core2"/>
+</beans>

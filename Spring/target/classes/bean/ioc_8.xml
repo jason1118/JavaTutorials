@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--自动扫描-->
+    <!--base-package自定扫描基础包，会给下面所有包的所有类（加了注解的类）扫描进IOC容器-->
+    <!--1-->
+    <context:component-scan base-package="cn.jason.spring.bean.chapter06"/>
+
+
+    <!--2-->
+    <context:component-scan base-package="cn.jason.spring.bean.chapter06" use-default-filters="false">
+        <!--context:include-filter 包含扫描-->
+        <!--
+        type值解释：
+            1.annotation:按照注解全类名排除 例如 expression="org.springframework.stereotype.Repository"
+            5.assignable:按照全类名排除 例如 expression="cn.jason.spring.bean.chapter06.dao.BookDao"
+            2.aspectj:
+            3.custom:自定义一个规则，实现接口TypeFilter的match方法
+            4.regex:正则表达式
+
+        -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <!--context:exclude-filter 排除扫描-->
+<!--        <context:exclude-filter expression="cn.jason.spring.bean.chapter06.service.BookService" type="assignable"/>-->
+    </context:component-scan>
+
+
+    <!--3-->
+    <context:component-scan base-package="cn.jason.spring.bean.chapter06">
+        <!--context:exclude-filter 排除扫描-->
+        <!--
+        type值解释：同上
+        -->
+        <context:exclude-filter expression="cn.jason.spring.bean.chapter06.service.BookService" type="assignable"/>
+    </context:component-scan>
+
+
+    <!--
+    三个context:component 会进行三次扫描，每次根据规则加载。如果有第一个扫描条件，则后面所有都不会生效
+    使用context:include-filter时候需要禁用 use-default-filters 属性。不然会所有都会扫描
+
+    默认的 filter 会扫描所有 @Component 注解修饰的 Java 类，而 @Controller、@Service、@Repository
+    甚至是 @Configuration 注解都是 @Component 的衍生注解，所以也会被扫描到。
+    -->
+</beans>

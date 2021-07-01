@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.jason.mybatis03_DynamicSQL.EmployeeDynamicSqlMapper">
+    <!--
+    if
+    choose (when, otherwise)
+    trim (where, set)
+    foreach
+    -->
+
+    <!--public List<Employee> getEmpsByConditionIf(Employee employee);-->
+    <select id="getEmpsByConditionIf" resultType="cn.jason.mybatis.bean.Employee">
+        select * from employee
+        where 1 = 1
+        <if test="id!=null">and id = #{id}</if>
+        <if test="lastName!=null and lastName!=''">and last_name = #{lastName}</if>
+    </select>
+
+
+    <!--foreach标签测试-->
+    <select id = "getEmpByConditionForeach" resultType="cn.jason.mybatis.bean.Employee">
+        select * from employee
+        where id in
+        <foreach collection="list1" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

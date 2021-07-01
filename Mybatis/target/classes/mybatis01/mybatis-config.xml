@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="db.properties">
+        <!--驱动写在这里，故意体现properties标签使用方式-->
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+    </properties>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+
+
+    </settings>
+    <environments default="mysql_dev">
+        <environment id="mysql_dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="cn.jason.mybatis01.dao"/>
+        <package name="cn.jason.mybatis02.dao"/>
+        <package name="cn.jason.mybatis03_DynamicSQL"/>
+    </mappers>
+</configuration>

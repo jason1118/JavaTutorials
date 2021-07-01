@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--
+    基于注解的aop配置
+    1.目标类、切面类都加入IOC容器中 @Component
+    2.告诉Spring哪个是切面类 @Aspect
+    3.在切面类中使用五个通知注解，配置切面中的通知方法什么时候执行
+    4.开启注解的AOP功能
+    -->
+
+    <!--
+    基于XML的AOP
+    1.配置bean
+    2.配置切面类 (需要aop名称空间）
+    3.配置何时何地运行
+    -->
+    <bean class="cn.jason.spring.aop.chapter03.impl.MyCalculate" id="calculate"/>
+    <bean class="cn.jason.spring.aop.chapter03.utils.ValidateAspect" id="validateAspect"/>
+    <bean class="cn.jason.spring.aop.chapter03.utils.LogUtil" id="logUtil"/>
+
+    <aop:config>
+        <!--指定切面-->
+        <aop:aspect ref="logUtil">
+
+            <!--抽取配置-->
+            <aop:pointcut id="execution" expression="execution(* cn.jason.spring.aop.chapter03.impl.*.*(..))"/>
+
+            <!--配置哪个方法是前置通知-->
+            <aop:before method="logStarta" pointcut="execution(* cn.jason.spring.aop.chapter03.impl.*.*(..))"/>
+            <aop:after method="logEnd" pointcut-ref="execution"/>
+            <aop:after-returning method="logReturn" pointcut-ref="execution" returning="result"/>
+            <aop:after-throwing method="logException" pointcut-ref="execution" throwing="exception"/>
+            <aop:around method="myAround" pointcut-ref="execution"/>
+        </aop:aspect>
+        <aop:aspect ref="validateAspect">
+            <aop:after method="logEnd" pointcut-ref="execution"/>
+            <aop:after-returning method="logReturn" pointcut-ref="execution" returning="result"/>
+            <aop:after-throwing method="logException" pointcut-ref="execution" throwing="exception"/>
+            <aop:before method="logStart" pointcut-ref="execution"/>
+        </aop:aspect>
+
+
+    </aop:config>
+
+</beans>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+      http://www.springframework.org/schema/util/spring-util-4.0.xsd
+">
+
+        <bean id="car" class="cn.jason.spring.bean.chapter01.Car">
+                <property name="carName" value="宝马"/>
+                <property name="carColor" value="绿色"/>
+                <property name="carPrice" value="30000"/>
+        </bean>
+
+        <!--各种类型属性赋值-->
+        <bean id="person1" class="cn.jason.spring.bean.chapter01.Person1">
+                <property name="name" value="null"/>
+                <property name="gender">
+                        <null/>
+                </property>
+
+                <!--引用其他bean组件-->
+                <!--<property name="car" ref="car"/>-->
+                <!--使用bean标签创建-->
+                <property name="car">
+                        <!--相当于new Car（）-->
+                        <bean class="cn.jason.spring.bean.chapter01.Car"/>
+                </property>
+
+        </bean>
+
+
+        <bean id="book0001" class="cn.jason.spring.bean.chapter01.Book" p:bookName="水浒传"/>
+        <bean id="person2" class="cn.jason.spring.bean.chapter01.Person1">
+                <property name="books">
+                        <!--Books books = new ArrayList<Book>()-->
+                        <list>
+                                <!--添加每一个元素-->
+                                <!--引用内部的bean是不能通过容器获取到的-->
+                                <bean id="book0000x" class="cn.jason.spring.bean.chapter01.Book" p:bookName="西游记"/>
+                                <ref bean="book0001"/>
+                        </list>
+                </property>
+                <!--map属性类型赋值-->
+                <property name="maps">
+                        <!--new LinkedHashMap()-->
+                        <map>
+                                <!--一个entry代表一个健值对-->
+                                <entry key="key01" value="张三"/>
+                                <entry key="key02" value="18"/>
+                                <entry key="key03" value-ref="book0001"/>
+                                <entry key="key04">
+                                        <bean class="cn.jason.spring.bean.chapter01.Car">
+                                                <property name="carName" value="宝马"/>
+                                        </bean>
+                                </entry>
+                                <entry key="key05">
+                                        <map></map>
+                                </entry>
+                        </map>
+                </property>
+        </bean>
+
+        <bean class="cn.jason.spring.bean.chapter01.Person1" id="person3">
+                <property name="properties">
+                        <!--properties = new Properties(); 也是键值对，所有的键值对都是String类型-->
+                        <!--因为都是字符串，所以都写在标签内部-->
+                        <props>
+                                <prop key="username">root</prop>
+                                <prop key="password">123456</prop>
+                        </props>
+                </property>
+        </bean>
+
+        <!--util名称空间创建创建集合类型的bean，方便别人引用-->
+        <bean class="cn.jason.spring.bean.chapter01.Person1" id="person4">
+                <property name="maps" ref="myMap">
+
+                </property>
+        </bean>
+        <!--如果不是util：map外部是无法引用这个内部对象的-->
+        <util:map id="myMap">
+                <!--一个entry代表一个健值对-->
+                <entry key="key01" value="张三"/>
+                <entry key="key02" value="18"/>
+                <entry key="key03" value-ref="book0001"/>
+                <entry key="key04">
+                        <bean class="cn.jason.spring.bean.chapter01.Car">
+                                <property name="carName" value="宝马"/>
+                        </bean>
+                </entry>
+                <entry key="key05">
+                        <map></map>
+                </entry>
+        </util:map>
+
+        <!--级联属性赋值，属性的属性-->
+        <bean class="cn.jason.spring.bean.chapter01.Person1" id="person8">
+                <property name="car" ref="car"/>
+                <property name="car.carName" value="大众"/>
+        </bean>
+</beans>
